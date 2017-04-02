@@ -15,6 +15,12 @@ return [
         'request' => [
             'csrfParam' => '_csrf-frontend',
         ],
+       /* 'urlManager' =>[
+            'class' => 'yii\web\UrlManager',
+            'showScriptName' => false,
+            'enablePrettyUrl' => true,
+            
+        ],*/
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,

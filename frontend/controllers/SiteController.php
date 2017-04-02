@@ -140,6 +140,8 @@ class SiteController extends Controller
     {
         return $this->render('about');
     }
+    
+    
 
     /**
      * Signs user up.
@@ -209,5 +211,55 @@ class SiteController extends Controller
         return $this->render('resetPassword', [
             'model' => $model,
         ]);
+    }
+    
+    /*
+    Muestra la pantalla de manejo de inventarios
+     *      */
+    public function actionAdmininv()
+    {
+        return $this->render('admininv');
+    }
+    
+    public function actionAdminper()
+    {
+        return $this->render('adminper');
+    }
+    
+    //AQUI SE DECLARAN LOS CONTROLES DE LAS PAGINAS DE ADMINISTRACION DE INVENTARIOS Y PERSONAS
+    //SIN ESTOS CONTROLES LA APLICACION NO VA A RENDEREAR LAS PAGINAS YA QUE SE SIGUE EL MODELO MVC
+    //LO QUE SE HACE ES QUE SE DECLARA UNA CLASE DE TIPO "actionNombredelavista" -->
+    //y esta vista se crea en frontend/views/site. Asi se tienen que crear las pantallas que se quieren ver.
+    //Se tienen que declarar los controles usando CamelCase ejemplo "actionVerpantalla" 
+    //y que la pagina se llame "verpantalla.php"
+    
+    public function actionAgregaequipo()
+    {
+        return $this->render('agregaequipo');
+    }
+    
+    public function actionAgregapersona()
+    {
+        return $this->render('agregapersona');
+    }
+    
+    public function actionModificaequipo()
+    {
+        return $this->render('modificaequipo');
+    }
+    
+    public function actionModificapersona()
+    {
+        return $this->render('modificapersona');
+    }
+    
+    public function actionVistaequipos()
+    {
+        return $this->render('vistaequipos');
+    }
+    
+    public function actionVistapersonas()
+    {
+        return $this->render('vistapersonas');
     }
 }

@@ -35,6 +35,7 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
+        //['label' => 'Administrar Inventarios', 'url' => ['site/admininv']],
         ['label' => 'Inicio', 'url' => ['/site/index']],
         ['label' => 'Acerca de', 'url' => ['/site/about']],
         ['label' => 'Contacto', 'url' => ['/site/contact']],
@@ -43,6 +44,8 @@ AppAsset::register($this);
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
         $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
     } else {
+         $menuItems[] = ['label' => 'Inventarios', 'url' => ['site/admininv']];
+         $menuItems[] = ['label' => 'Personas', 'url' => ['site/adminper']];
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
