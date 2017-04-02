@@ -17,7 +17,12 @@ $this->title = 'Sistema de Inventarios';
     <div class="body-content">
 
         <div class="row">
-            <div class="col-lg-4">
+           <?php 
+            if (Yii::$app->user->isGuest) {
+            
+            }
+           ?> 
+           <div class="col-lg-4">
                 <img src="..\assets\images\CS4.png" height="150" width="200">
             </div>
             <div class="col-lg-4">
