@@ -51,31 +51,32 @@ $this->title = 'Sistema de Inventarios';
     
     <div class="jumbotron">
         
-        <h1>Administrar Inventarios</h1>
+        <h1>Modulo de Administrador</h1>
+        <p>Se pueden crear Marcas nuevas, Estados, Modelos de equipos, etc.<br>
+        Se pueden crear Departamentos de personal.</p>
 
     </div>
 
     <div class="body-content">
 
         <div class="row">
-            <div class="col-lg-4">
-                <a href="index.php?r=equipo/create" class="button">Ingresar Equipos</a> <!-- Se usa esa direccion ya que es la que funciona con los controladores -->
-            </div>
-            <div class="col-lg-4">
-                <a href="index.php?r=equipo/index" class="button">Modificar Equipos</a>
-            </div>
-            <div class="col-lg-4">
-                <a href="index.php?r=equipo/index" class="button">Visualizar Inventario</a>
-            </div>
-        </div>
-        <br><br>
-      <!--  <div class="row">
+            <h2>Equipos</h2>
             <div class="col-lg-4">
                 <a href="index.php?r=estado/index" class="button">Estados</a>
             </div>
             <div class="col-lg-4">
                 <a href="index.php?r=marca/index" class="button">Marcas</a>
             </div>
-        </div> -->
+            <div class="col-lg-4">
+                <a href="index.php?r=modelo/index" class="button">Modelos</a>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <h2>Personal</h2>
+            <div class="col-lg-4">
+                <a href="index.php?r=departamento/index" class="button">Departamentos</a>
+            </div>
+        </div>
     </div>
 </div>

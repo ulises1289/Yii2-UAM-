@@ -262,4 +262,9 @@ class SiteController extends Controller
     {
         return $this->render('vistapersonas');
     }
+    
+    public function actionAdministrador()
+    {
+        return $this->render('administrador');
+    }
 }
