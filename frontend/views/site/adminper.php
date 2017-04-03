@@ -58,13 +58,13 @@ $this->title = 'Sistema de Inventarios';
 
         <div class="row">
             <div class="col-lg-4">
-                <a href="index.php?r=site%2Fagregapersona" class="button">Ingresar Persona</a> <!-- Se usa esa direccion ya que es la que funciona con los controladores -->
+                <a href="index.php?r=empleado/create" class="button">Ingresar Persona</a> <!-- Se usa esa direccion ya que es la que funciona con los controladores -->
             </div>
             <div class="col-lg-4">
-                <a href="index.php?r=site%2Fmodificapersona" class="button">Modificar Persona</a>
+                <a href="index.php?r=empleado/index" class="button">Modificar Persona</a>
             </div>
             <div class="col-lg-4">
-                <a href="index.php?r=site%2Fvistapersonas" class="button">Visualizar Personal</a>
+                <a href="index.php?r=empleado/index" class="button">Visualizar Personal</a>
             </div>
         </div>
     </div>
