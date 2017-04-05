@@ -1,12 +1,12 @@
 <?php
 
 use yii\helpers\Html;
-use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 use app\models\Marca;
 use app\models\Modelo;
 use app\models\Tipoequipo;
 use app\models\Estado;
+use yii\helpers\ArrayHelper;
 
 
 /* @var $this yii\web\View */
