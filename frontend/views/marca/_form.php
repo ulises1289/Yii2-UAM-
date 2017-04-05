@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\Estado;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Marca */
@@ -14,7 +16,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'nombreMarca')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'idEstado')->textInput() ?>
+    <?= $form->field($model, 'idEstado')->dropDownList(
+    ArrayHelper::map(Estado::find()->all(),'idEstado','nombreEstado'),
+    ['prompt'=>'Seleccione el estado de la Marca']
+    )?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
