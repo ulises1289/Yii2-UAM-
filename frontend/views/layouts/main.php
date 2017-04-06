@@ -21,6 +21,7 @@ AppAsset::register($this);
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> <!-- LLAMA A JQUERY-->
 </head>
 <body>
 <?php $this->beginBody() ?>
@@ -34,6 +35,7 @@ AppAsset::register($this);
             'class' => 'navbar-inverse navbar-fixed-top', 
         ],
     ]);
+     
     $menuItems = [
         //['label' => 'Administrar Inventarios', 'url' => ['site/admininv']],
         ['label' => 'Inicio', 'url' => ['/site/index']],
@@ -60,6 +62,7 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => $menuItems,
     ]);
+    
     NavBar::end();
     ?>
 
@@ -75,12 +78,19 @@ AppAsset::register($this);
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; Sistema de Inventarios VER 1.0 | <?= date('Y') ?></p>
-
+        <p id="WEBS" align="right">*ESTADO, PAIS*</p>
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
 
 <?php $this->endBody() ?>
+    
+    <script>
+        document.getElementById("WEBS").innerHTML = "PRUEBA";
+   
+    </script>
+    
+    
 </body>
 </html>
 <?php $this->endPage() ?>
