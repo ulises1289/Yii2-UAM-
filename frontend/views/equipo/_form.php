@@ -2,6 +2,12 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use app\models\Marca;
+use app\models\Modelo;
+use app\models\Tipoequipo;
+use app\models\Estado;
+use yii\helpers\ArrayHelper;
+
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Equipo */
@@ -12,17 +18,29 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'idMarca')->textInput() ?>
+    <?= $form->field($model, 'idMarca')->dropDownList(
+    ArrayHelper::map(Marca::find()->all(),'idMarca','nombreMarca'),
+    ['prompt'=>'Seleccione Marca']
+    )?>
 
-    <?= $form->field($model, 'idModelo')->textInput() ?>
+    <?= $form->field($model, 'idModelo')->dropDownList(
+    ArrayHelper::map(Modelo::find()->all(),'idModelo','nombreModelo'),
+    ['prompt'=>'Seleccione Modelo']
+    )?>
 
-    <?= $form->field($model, 'idTipoEquipo')->textInput() ?>
+    <?= $form->field($model, 'idTipoEquipo')->dropDownList(
+    ArrayHelper::map(Tipoequipo::find()->all(),'idTipoEquipo','nombreTipoEquipo'),
+    ['prompt'=>'Seleccione Tipo de Equipo']
+    )?>
 
-    <?= $form->field($model, 'idEstado')->textInput() ?>
+    <?= $form->field($model, 'idEstado')->dropDownList(
+    ArrayHelper::map(Estado::find()->all(),'idEstado','nombreEstado'),
+    ['prompt'=>'Seleccione el estado del Equipo']
+    )?>
 
     <?= $form->field($model, 'serie')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'fecCompra')->textInput() ?>
+    <?= $form->field($model, 'fecCompra')->textInput()?>
 
     <?= $form->field($model, 'fecMantemiento')->textInput() ?>
 

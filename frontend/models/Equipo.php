@@ -56,8 +56,8 @@ class Equipo extends \yii\db\ActiveRecord
     {
         return [
             'idEquipo' => 'Id Equipo',
-            'idMarca' => 'Id Marca',
-            'idModelo' => 'Id Modelo',
+            'idMarca' => 'Nombre Marca',
+            'idModelo' => 'Nombre Modelo',
             'idTipoEquipo' => 'Id Tipo Equipo',
             'idEstado' => 'Id Estado',
             'serie' => 'Serie',
