@@ -78,7 +78,7 @@ AppAsset::register($this);
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; Sistema de Inventarios VER 1.0 | <?= date('Y') ?></p>
-        <p id="WEBS" align="right">*ESTADO, PAIS*</p>
+        <p id="WEBS" align="center">*ESTADO, PAIS*</p>
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
@@ -90,6 +90,11 @@ AppAsset::register($this);
    
     </script>
     
+ <?php 
+ 
+  /*codigo para el web service*/
+
+ ?>   
     
 </body>
 </html>
