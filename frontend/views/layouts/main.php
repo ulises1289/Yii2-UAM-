@@ -85,10 +85,58 @@ AppAsset::register($this);
 
 <?php $this->endBody() ?>
     
+    <!-- Se agrega php para llamada a WebService -->
+
+<?php
+
+function getRealIP()
+{
+    if (isset($_SERVER["HTTP_CLIENT_IP"]))
+    {   return $_SERVER["HTTP_CLIENT_IP"]; }
+    elseif (isset($_SERVER["HTTP_X_FORWARDED_FOR"]))
+    { return $_SERVER["HTTP_X_FORWARDED_FOR"]; }
+    elseif (isset($_SERVER["HTTP_X_FORWARDED"]))
+    {  return $_SERVER["HTTP_X_FORWARDED"]; }
+    elseif (isset($_SERVER["HTTP_FORWARDED_FOR"]))
+    {  return $_SERVER["HTTP_FORWARDED_FOR"];  }
+    elseif (isset($_SERVER["HTTP_FORWARDED"]))
+    {  return $_SERVER["HTTP_FORWARDED"];  }
+    else
+    {        return $_SERVER["REMOTE_ADDR"];    }
+}
+
+    $resultado = "";
+    //$codigoIP = getRealIP();
+    //echo $codigoIP;
+    $codigoIP = "201.199.201.190"; //CR
+    //$codigoIP = "66.192.5.40"; //USA
+    $url = "http://www.webservicex.net/geoipservice.asmx?WSDL";
+    $client = new SoapClient($url,array(
+                                       'exceptions' => true,
+                                    ));
+    try {
+    $res = $client->GetGeoIP(array('IPAddress' => $codigoIP));
+    } catch (SoapFault $fault) {
+        $resultado = "FALLO";
+    }
+    if ("FALLO"==$resultado){
+        $pais = "NO DEFINIDO";
+    } else {
+        if ($res->GetGeoIPResult->ReturnCode == 1){   
+            $pais = $res->GetGeoIPResult->CountryName;}
+        else{
+            $pais = " ND ";
+        }
+    }
+    							
+?>
+
+<!-- FIN -->
     <script>
-        document.getElementById("WEBS").innerHTML = "PRUEBA";
-   
+        
+        document.getElementById("WEBS").innerHTML = '<?php echo $pais; ?>';
     </script>
+
     
     
 </body>
