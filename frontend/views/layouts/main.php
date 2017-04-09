@@ -1,15 +1,12 @@
 <?php
-
 /* @var $this \yii\web\View */
 /* @var $content string */
-
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use frontend\assets\AppAsset;
 use common\widgets\Alert;
-
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -78,23 +75,65 @@ AppAsset::register($this);
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; Sistema de Inventarios VER 1.0 | <?= date('Y') ?></p>
-        <p id="WEBS" align="center">*ESTADO, PAIS*</p>
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p id="WEBS" class="pull-right">*ESTADO, PAIS*</p>
+        
     </div>
 </footer>
 
 <?php $this->endBody() ?>
     
-    <script>
-        document.getElementById("WEBS").innerHTML = "PRUEBA";
-   
-    </script>
-    
- <?php 
- 
-  /*codigo para el web service*/
+    <!-- Se agrega php para llamada a WebService -->
 
- ?>   
+<?php
+function getRealIP()
+{
+    if (isset($_SERVER["HTTP_CLIENT_IP"]))
+    {   return $_SERVER["HTTP_CLIENT_IP"]; }
+    elseif (isset($_SERVER["HTTP_X_FORWARDED_FOR"]))
+    { return $_SERVER["HTTP_X_FORWARDED_FOR"]; }
+    elseif (isset($_SERVER["HTTP_X_FORWARDED"]))
+    {  return $_SERVER["HTTP_X_FORWARDED"]; }
+    elseif (isset($_SERVER["HTTP_FORWARDED_FOR"]))
+    {  return $_SERVER["HTTP_FORWARDED_FOR"];  }
+    elseif (isset($_SERVER["HTTP_FORWARDED"]))
+    {  return $_SERVER["HTTP_FORWARDED"];  }
+    else
+    {        return $_SERVER["REMOTE_ADDR"];    }
+}
+    $resultado = "";
+    //$codigoIP = getRealIP();
+    //echo $codigoIP;
+    $codigoIP = "201.199.201.190"; //CR 
+    //$codigoIP = $_SERVER["REMOTE_ADDR"]; //CONSIGUE LA IP DEL CLIENTE, SE DEJA DESACTIVADO POR EJECUTARSE EN LOCALHOST
+    //$codigoIP = "66.192.5.40"; //USA
+    $url = "http://www.webservicex.net/geoipservice.asmx?WSDL";
+    $client = new SoapClient($url,array(
+                                       'exceptions' => true,
+                                    ));
+    try {
+    $res = $client->GetGeoIP(array('IPAddress' => $codigoIP));
+    } catch (SoapFault $fault) {
+        $resultado = "FALLO";
+    }
+    if ("FALLO"==$resultado){
+        $pais = "NO DEFINIDO";
+    } else {
+        if ($res->GetGeoIPResult->ReturnCode == 1){   
+            $pais = $res->GetGeoIPResult->CountryName;}
+        else{
+            $pais = " ND ";
+        }
+    }
+    							
+?>
+
+<!-- FIN -->
+    <script>
+        
+        document.getElementById("WEBS").innerHTML = '<?php echo $pais //$pais; ?>';
+    </script>
+
+    
     
 </body>
 </html>
