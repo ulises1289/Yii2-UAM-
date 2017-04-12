@@ -46,6 +46,7 @@ class Equipo extends \yii\db\ActiveRecord
             [['idMarca'], 'exist', 'skipOnError' => true, 'targetClass' => Marca::className(), 'targetAttribute' => ['idMarca' => 'idMarca']],
             [['idModelo'], 'exist', 'skipOnError' => true, 'targetClass' => Modelo::className(), 'targetAttribute' => ['idModelo' => 'idModelo']],
             [['idTipoEquipo'], 'exist', 'skipOnError' => true, 'targetClass' => Tipoequipo::className(), 'targetAttribute' => ['idTipoEquipo' => 'idTipoEquipo']],
+            [['idDpto'], 'exist', 'skipOnError' => true, 'targetClass' => Departamento::className(), 'targetAttribute' => ['idDpto' => 'idDpto']],
         ];
     }
 
@@ -56,14 +57,14 @@ class Equipo extends \yii\db\ActiveRecord
     {
         return [
             'idEquipo' => 'Id Equipo',
-            'idMarca' => 'Nombre Marca',
-            'idModelo' => 'Nombre Modelo',
-            'idTipoEquipo' => 'Id Tipo Equipo',
-            'idEstado' => 'Id Estado',
+            'idMarca' => 'Marca',
+            'idModelo' => 'Modelo',
+            'idTipoEquipo' => 'Tipo Equipo',
+            'idEstado' => 'Estado',
             'serie' => 'Serie',
             'fecCompra' => 'Fec Compra',
             'fecMantemiento' => 'Fec Mantemiento',
-            'idEmpleado' => 'Id Empleado',
+            'idEmpleado' => 'Nombre Empleado',
         ];
     }
 
@@ -97,5 +98,9 @@ class Equipo extends \yii\db\ActiveRecord
     public function getIdTipoEquipo0()
     {
         return $this->hasOne(Tipoequipo::className(), ['idTipoEquipo' => 'idTipoEquipo']);
+    }
+    public function getIdEmpleado0()
+    {
+        return $this->hasOne(Empleado::className(), ['idEmpleado' => 'idEmpleado']);
     }
 }
