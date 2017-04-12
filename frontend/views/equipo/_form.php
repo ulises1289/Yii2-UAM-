@@ -6,7 +6,9 @@ use app\models\Marca;
 use app\models\Modelo;
 use app\models\Tipoequipo;
 use app\models\Estado;
+use app\models\Empleado;
 use yii\helpers\ArrayHelper;
+use dosamigos\datepicker\DatePicker;
 
 
 /* @var $this yii\web\View */
@@ -39,12 +41,15 @@ use yii\helpers\ArrayHelper;
     )?>
 
     <?= $form->field($model, 'serie')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'fecCompra')->textInput()?>
+    
+    <?= $form->field($model, 'fecCompra')->textInput()?> 
 
     <?= $form->field($model, 'fecMantemiento')->textInput() ?>
 
-    <?= $form->field($model, 'idEmpleado')->textInput() ?>
+    <?= $form->field($model, 'idEmpleado')->dropDownList(
+    ArrayHelper::map(Empleado::find()->all(),'idEmpleado','nombre'),
+    ['prompt'=>'Seleccione el empleado']
+    )?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

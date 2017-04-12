@@ -25,15 +25,34 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             //'idEquipo',
-            'idMarca0.nombreMarca',
-            'idModelo0.nombreModelo',
-            'idTipoEquipo0.nombreTipoEquipo',
-            'idEstado0.nombreEstado',
+            [
+                'attribute'=>'idMarca',
+                'value'=>'idMarca0.nombreMarca',
+            ],
+            //'idMarca0.nombreMarca',
+            [
+                'attribute'=>'idModelo',
+                'value'=>'idModelo0.nombreModelo',
+            ],
+            //'idModelo0.nombreModelo',
+            [
+                'attribute'=>'idTipoEquipo',
+                'value'=>'idTipoEquipo0.nombreTipoEquipo',
+            ],
+            //'idTipoEquipo0.nombreTipoEquipo',
+            [
+                'attribute'=>'idEstado',
+                'value'=>'idEstado0.nombreEstado',
+            ],
+            //'idEstado0.nombreEstado',
             'serie',
             // 'fecCompra',
             // 'fecMantemiento',
-            'idEmpleado',
-
+            [
+                'attribute'=>'idEmpleado',
+                'value'=>'idEmpleado0.nombre',
+            ],
+            //'idEmpleado',
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>

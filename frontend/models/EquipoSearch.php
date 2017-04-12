@@ -18,8 +18,8 @@ class EquipoSearch extends Equipo
     public function rules()
     {
         return [
-            [['idEquipo', 'idMarca', 'idModelo', 'idTipoEquipo', 'idEstado', 'idEmpleado'], 'integer'],
-            [['serie', 'fecCompra', 'fecMantemiento'], 'safe'],
+            [['idEquipo',], 'integer'],
+            [['serie','idEmpleado','idEstado','idTipoEquipo','idMarca','idModelo', 'fecCompra', 'fecMantemiento'], 'safe'],
         ];
     }
 
@@ -57,19 +57,30 @@ class EquipoSearch extends Equipo
             return $dataProvider;
         }
 
+        $query->joinWith('idMarca0');
+        $query->joinWith('idModelo0');
+        $query->joinWith('idTipoEquipo0');
+        $query->joinWith('idEstado0');
+        $query->joinWith('idEmpleado0');
+        
         // grid filtering conditions
         $query->andFilterWhere([
             'idEquipo' => $this->idEquipo,
-            'idMarca' => $this->idMarca,
-            'idModelo' => $this->idModelo,
-            'idTipoEquipo' => $this->idTipoEquipo,
-            'idEstado' => $this->idEstado,
+            //'idMarca' => $this->idMarca,
+            //'idModelo' => $this->idModelo,
+            //'idTipoEquipo' => $this->idTipoEquipo,
+            //'idEstado' => $this->idEstado,
             'fecCompra' => $this->fecCompra,
             'fecMantemiento' => $this->fecMantemiento,
-            'idEmpleado' => $this->idEmpleado,
+            //'idEmpleado' => $this->idEmpleado,
         ]);
 
-        $query->andFilterWhere(['like', 'serie', $this->serie]);
+        $query->andFilterWhere(['like', 'serie', $this->serie])
+              ->andFilterWhere(['like', 'marca.nombreMarca', $this->idMarca])
+              ->andFilterWhere(['like', 'modelo.nombreModelo', $this->idModelo])
+              ->andFilterWhere(['like', 'tipoequipo.nombreTipoEquipo', $this->idTipoEquipo])
+              ->andFilterWhere(['like', 'estado.nombreEstado', $this->idEstado])
+              ->andFilterWhere(['like', 'empleado.nombre', $this->idEmpleado]);
 
         return $dataProvider;
     }
