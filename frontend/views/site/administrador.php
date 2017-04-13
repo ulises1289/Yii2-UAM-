@@ -63,11 +63,10 @@ $this->title = 'Sistema de Inventarios';
             <h2>Equipos</h2>
             <div class="col-lg-4">
                 <a href="index.php?r=estado/index" class="button">Estados</a>
+                <a href="index.php?r=tipoequipo/index" class="button">Tipo de Equipo</a>
             </div>
             <div class="col-lg-4">
                 <a href="index.php?r=marca/index" class="button">Marcas</a>
-            </div>
-            <div class="col-lg-4">
                 <a href="index.php?r=modelo/index" class="button">Modelos</a>
             </div>
         </div>
