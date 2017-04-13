@@ -46,7 +46,6 @@ class Equipo extends \yii\db\ActiveRecord
             [['idMarca'], 'exist', 'skipOnError' => true, 'targetClass' => Marca::className(), 'targetAttribute' => ['idMarca' => 'idMarca']],
             [['idModelo'], 'exist', 'skipOnError' => true, 'targetClass' => Modelo::className(), 'targetAttribute' => ['idModelo' => 'idModelo']],
             [['idTipoEquipo'], 'exist', 'skipOnError' => true, 'targetClass' => Tipoequipo::className(), 'targetAttribute' => ['idTipoEquipo' => 'idTipoEquipo']],
-           // [['idDpto'], 'exist', 'skipOnError' => true, 'targetClass' => Departamento::className(), 'targetAttribute' => ['idDpto' => 'idDpto']],
         ];
     }
 

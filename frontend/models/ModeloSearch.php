@@ -18,8 +18,8 @@ class ModeloSearch extends Modelo
     public function rules()
     {
         return [
-            [['idModelo', 'idEstado'], 'integer'],
-            [['nombreModelo'], 'safe'],
+            [['idModelo'], 'integer'],
+            [['nombreModelo', 'idEstado'], 'safe'],
         ];
     }
 
@@ -57,13 +57,16 @@ class ModeloSearch extends Modelo
             return $dataProvider;
         }
 
+        $query->joinWith('idEstado0');
+        
         // grid filtering conditions
         $query->andFilterWhere([
             'idModelo' => $this->idModelo,
-            'idEstado' => $this->idEstado,
+            //'idEstado' => $this->idEstado,
         ]);
 
-        $query->andFilterWhere(['like', 'nombreModelo', $this->nombreModelo]);
+        $query->andFilterWhere(['like', 'nombreModelo', $this->nombreModelo])
+              ->andFilterWhere(['like', 'estado.nombreEstado', $this->idEstado]);  
 
         return $dataProvider;
     }

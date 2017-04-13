@@ -44,8 +44,8 @@ class Modelo extends \yii\db\ActiveRecord
     {
         return [
             'idModelo' => 'Id Modelo',
-            'nombreModelo' => 'Nombre Modelo',
-            'idEstado' => 'Id Estado',
+            'nombreModelo' => 'Modelo',
+            'idEstado' => 'Estado',
         ];
     }
 

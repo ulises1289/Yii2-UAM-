@@ -46,8 +46,8 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             //'idEstado0.nombreEstado',
             'serie',
-            // 'fecCompra',
-            // 'fecMantemiento',
+            'fecCompra',
+            'fecMantemiento',
             [
                 'attribute'=>'idEmpleado',
                 'value'=>'idEmpleado0.nombre',

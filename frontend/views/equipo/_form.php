@@ -42,9 +42,28 @@ use dosamigos\datepicker\DatePicker;
 
     <?= $form->field($model, 'serie')->textInput(['maxlength' => true]) ?>
     
-    <?= $form->field($model, 'fecCompra')->textInput()?> <!-- DATEPICKER -->
-    
-    <?= $form->field($model, 'fecMantemiento')->textInput() ?> <!-- DATEPICKER -->
+    <?= $form->field($model, 'fecCompra')->widget(
+    DatePicker::className(), [
+        // inline too, not bad
+         //'inline' => true, 
+         // modify template for custom rendering
+        //'template' => '<div class="well well-sm" style="background-color: #fff; width:250px">{input}</div>',
+        'clientOptions' => [
+            'autoclose' => true,
+            'format' => 'yyyy-mm-dd'
+        ]
+    ]);?>
+    <?= $form->field($model, 'fecMantemiento')->widget(
+    DatePicker::className(), [
+        // inline too, not bad
+        // 'inline' => true, 
+         // modify template for custom rendering
+        //'template' => '<div class="well well-sm" style="background-color: #fff; width:250px">{input}</div>',
+        'clientOptions' => [
+            'autoclose' => true,
+            'format' => 'yyyy-mm-dd'
+        ]
+    ]);?>
 
     <?= $form->field($model, 'idEmpleado')->dropDownList(
     ArrayHelper::map(Empleado::find()->all(),'idEmpleado','nombre'),
