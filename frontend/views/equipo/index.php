@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use dosamigos\datepicker\DatePicker;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\EquipoSearch */
@@ -18,6 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Equipo', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+    <?php    Pjax::begin(); ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -46,8 +49,35 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             //'idEstado0.nombreEstado',
             'serie',
-            'fecCompra',
-            'fecMantemiento',
+            
+            [
+                'attribute'=>'fecCompra',
+                'value'=>'fecCompra',
+                'format'=>'raw',
+                'filter'=>DatePicker::widget([
+                'model' => $searchModel,
+                'attribute' => 'fecCompra',
+                    'clientOptions' => [
+                        'autoclose' => true,
+                        'format' => 'yyyy-mm-dd',
+                    ]
+                ]),
+            ],
+            
+            [
+                'attribute'=>'fecMantemiento',
+                'value'=>'fecMantemiento',
+                'format'=>'raw',
+                'filter'=>DatePicker::widget([
+                'model' => $searchModel,
+                'attribute' => 'fecMantemiento',
+                    'clientOptions' => [
+                        'autoclose' => true,
+                        'format' => 'yyyy-mm-dd',
+                    ]
+                ]),
+            ],
+            
             [
                 'attribute'=>'idEmpleado',
                 'value'=>'idEmpleado0.nombre',
@@ -56,4 +86,5 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+    <?php Pjax::end(); ?>
 </div>
