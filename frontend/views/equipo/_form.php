@@ -42,9 +42,9 @@ use dosamigos\datepicker\DatePicker;
 
     <?= $form->field($model, 'serie')->textInput(['maxlength' => true]) ?>
     
-    <?= $form->field($model, 'fecCompra')->textInput()?> 
-
-    <?= $form->field($model, 'fecMantemiento')->textInput() ?>
+    <?= $form->field($model, 'fecCompra')->textInput()?> <!-- DATEPICKER -->
+    
+    <?= $form->field($model, 'fecMantemiento')->textInput() ?> <!-- DATEPICKER -->
 
     <?= $form->field($model, 'idEmpleado')->dropDownList(
     ArrayHelper::map(Empleado::find()->all(),'idEmpleado','nombre'),
