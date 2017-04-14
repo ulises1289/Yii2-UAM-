@@ -19,7 +19,8 @@ use kartik\select2\Select2;
 
 <div class="equipo-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options'=>['enctype'=> 'multipart/form-data']]); ?>
+    
     
     <?= $form->field($model, 'idMarca')->widget(Select2::classname(), [
     'data' => ArrayHelper::map(Marca::find()->all(),'idMarca','nombreMarca'),
@@ -58,6 +59,8 @@ use kartik\select2\Select2;
     ]); ?>
 
     <?= $form->field($model, 'serie')->textInput(['maxlength' => true]) ?>
+    
+    <!-- <?= $form->field($model, 'file')->fileInput();?>   -->
     
     <?= $form->field($model, 'fecCompra')->widget(
     DatePicker::className(), [

@@ -9,6 +9,8 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\web\UploadedFile;
+
 
 /**
  * EquipoController implements the CRUD actions for Equipo model.
@@ -77,9 +79,24 @@ class EquipoController extends Controller
     {
         $model = new Equipo();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) && $model->save()) 
+        {
+            
+            /*  //traer la instancia del archivo
+            $archivoName = $model->serie;
+            $model->file = UploadedFile::getInstance($model,'file');
+            $model->file->saveAs('uploads/'.$archivoName.'.'.$model->file->extension);
+            
+            //guardar la ruta en la comumna de la tabla
+            
+           $model->archivo = 'uploads/'.$archivoName.'.'.$model->file->extension;
+           $model->save();  */
+           
+            
             return $this->redirect(['view', 'id' => $model->idEquipo]);
-        } else {
+        }
+        
+        else {
             return $this->render('create', [
                 'model' => $model,
             ]);

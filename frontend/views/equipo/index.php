@@ -4,6 +4,8 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 use dosamigos\datepicker\DatePicker;
 use yii\widgets\Pjax;
+use yii\bootstrap\Modal;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\EquipoSearch */
@@ -20,10 +22,18 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Equipo', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+    
     <?php    Pjax::begin(); ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'rowOptions' => function($model){
+            if($model->idEstado == 1)
+            {
+                return ['class'=>'success'];
+            }
+        },
+        
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 

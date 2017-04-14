@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use app\models\Estado;
 use yii\helpers\ArrayHelper;
+use kartik\select2\Select2;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Marca */
@@ -16,10 +17,14 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'nombreMarca')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'idEstado')->dropDownList(
-    ArrayHelper::map(Estado::find()->all(),'idEstado','nombreEstado'),
-    ['prompt'=>'Seleccione el estado de la Marca']
-    )?>
+    <?= $form->field($model, 'idEstado')->widget(Select2::classname(), [
+    'data' =>  ArrayHelper::map(Estado::find()->all(),'idEstado','nombreEstado'),
+    'language' => 'es',
+    'options' => ['placeholder' => 'Seleccione una Estado'],
+    'pluginOptions' => [
+        'allowClear' => true
+    ],
+    ]); ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>

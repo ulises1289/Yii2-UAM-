@@ -27,6 +27,9 @@ class Equipo extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    
+    public $file;
+    
     public static function tableName()
     {
         return 'equipo';
@@ -42,6 +45,8 @@ class Equipo extends \yii\db\ActiveRecord
             [['idMarca', 'idModelo', 'idTipoEquipo', 'idEstado', 'idEmpleado'], 'integer'],
             [['fecCompra', 'fecMantemiento'], 'safe'],
             [['serie'], 'string', 'max' => 50],
+            //[['file'], 'file','extensions' => 'png, jpg, pdf'],
+            //[['archivo'], 'string', 'max' => 200],
             [['idEstado'], 'exist', 'skipOnError' => true, 'targetClass' => Estado::className(), 'targetAttribute' => ['idEstado' => 'idEstado']],
             [['idMarca'], 'exist', 'skipOnError' => true, 'targetClass' => Marca::className(), 'targetAttribute' => ['idMarca' => 'idMarca']],
             [['idModelo'], 'exist', 'skipOnError' => true, 'targetClass' => Modelo::className(), 'targetAttribute' => ['idModelo' => 'idModelo']],
@@ -64,6 +69,7 @@ class Equipo extends \yii\db\ActiveRecord
             'fecCompra' => 'Fec Compra',
             'fecMantemiento' => 'Fec Mantemiento',
             'idEmpleado' => 'Nombre Empleado',
+            //'file'=> 'Archivo de Equipo'
         ];
     }
 
