@@ -18,8 +18,8 @@ class EmpleadoSearch extends Empleado
     public function rules()
     {
         return [
-            [['idEmpleado', 'idEstado', 'idDpto'], 'integer'],
-            [['nombre', 'apellidos', 'cedula'], 'safe'],
+            [['idEmpleado'], 'integer'],
+            [['nombre', 'apellidos', 'cedula', 'idEstado', 'idDpto'], 'safe'],
         ];
     }
 
@@ -56,17 +56,22 @@ class EmpleadoSearch extends Empleado
             // $query->where('0=1');
             return $dataProvider;
         }
-
+        
+        $query->joinWith('idEstado0');
+        $query->joinWith('idDpto0');
+        
         // grid filtering conditions
         $query->andFilterWhere([
             'idEmpleado' => $this->idEmpleado,
-            'idEstado' => $this->idEstado,
-            'idDpto' => $this->idDpto,
+            //'idEstado' => $this->idEstado,
+            //'idDpto' => $this->idDpto,
         ]);
 
         $query->andFilterWhere(['like', 'nombre', $this->nombre])
             ->andFilterWhere(['like', 'apellidos', $this->apellidos])
-            ->andFilterWhere(['like', 'cedula', $this->cedula]);
+            ->andFilterWhere(['like', 'cedula', $this->cedula])
+            ->andFilterWhere(['like', 'estado.nombreEstado', $this->idEstado])
+            ->andFilterWhere(['like', 'departamento.nombreDpto', $this->idDpto]);
 
         return $dataProvider;
     }

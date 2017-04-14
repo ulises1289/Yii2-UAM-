@@ -18,8 +18,8 @@ class MarcaSearch extends Marca
     public function rules()
     {
         return [
-            [['idMarca', 'idEstado'], 'integer'],
-            [['nombreMarca'], 'safe'],
+            [['idMarca'], 'integer'],
+            [['nombreMarca', 'idEstado'], 'safe'],
         ];
     }
 
@@ -56,14 +56,17 @@ class MarcaSearch extends Marca
             // $query->where('0=1');
             return $dataProvider;
         }
-
+        
+        $query->joinWith('idEstado0');
+        
         // grid filtering conditions
         $query->andFilterWhere([
             'idMarca' => $this->idMarca,
-            'idEstado' => $this->idEstado,
+            //'idEstado' => $this->idEstado,
         ]);
 
-        $query->andFilterWhere(['like', 'nombreMarca', $this->nombreMarca]);
+        $query->andFilterWhere(['like', 'nombreMarca', $this->nombreMarca])
+              ->andFilterWhere(['like', 'estado.nombreEstado', $this->idEstado]);
 
         return $dataProvider;
     }

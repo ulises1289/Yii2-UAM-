@@ -44,8 +44,8 @@ class Departamento extends \yii\db\ActiveRecord
     {
         return [
             'idDpto' => 'Id Dpto',
-            'nombreDpto' => 'Nombre Dpto',
-            'idEstado' => 'Id Estado',
+            'nombreDpto' => 'Departamento',
+            'idEstado' => 'Estado',
         ];
     }
 

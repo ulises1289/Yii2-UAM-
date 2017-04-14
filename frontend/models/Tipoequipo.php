@@ -44,8 +44,8 @@ class Tipoequipo extends \yii\db\ActiveRecord
     {
         return [
             'idTipoEquipo' => 'Id Tipo Equipo',
-            'nombreTipoEquipo' => 'Nombre Tipo Equipo',
-            'idEstado' => 'Id Estado',
+            'nombreTipoEquipo' => 'Tipo Equipo',
+            'idEstado' => 'Estado',
         ];
     }
 
