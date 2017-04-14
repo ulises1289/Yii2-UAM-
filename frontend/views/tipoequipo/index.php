@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\grid\GridView;
+use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\models\TipoequipoSearch */
@@ -64,17 +65,23 @@ $this->params['breadcrumbs'][] = $this->title;
     <p>
         <?= Html::a('Create Tipoequipo', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
+    <?php    Pjax::begin(); ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'idTipoEquipo',
+            //'idTipoEquipo',
+            [
+                'attribute'=>'idEstado',
+                'value'=>'idEstado0.nombreEstado',
+            ],
             'nombreTipoEquipo',
-            'idEstado',
+            //'idEstado',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+    <?php Pjax::end(); ?>
 </div>

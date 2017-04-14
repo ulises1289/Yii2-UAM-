@@ -18,8 +18,8 @@ class TipoequipoSearch extends Tipoequipo
     public function rules()
     {
         return [
-            [['idTipoEquipo', 'idEstado'], 'integer'],
-            [['nombreTipoEquipo'], 'safe'],
+            [['idTipoEquipo'], 'integer'],
+            [['nombreTipoEquipo', 'idEstado'], 'safe'],
         ];
     }
 
@@ -56,14 +56,17 @@ class TipoequipoSearch extends Tipoequipo
             // $query->where('0=1');
             return $dataProvider;
         }
-
+        
+        $query->joinWith('idEstado0');
+        
         // grid filtering conditions
         $query->andFilterWhere([
             'idTipoEquipo' => $this->idTipoEquipo,
-            'idEstado' => $this->idEstado,
+            //'idEstado' => $this->idEstado,
         ]);
 
-        $query->andFilterWhere(['like', 'nombreTipoEquipo', $this->nombreTipoEquipo]);
+        $query->andFilterWhere(['like', 'nombreTipoEquipo', $this->nombreTipoEquipo])
+              ->andFilterWhere(['like', 'estado.nombreEstado', $this->idEstado]);
 
         return $dataProvider;
     }

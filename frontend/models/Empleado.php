@@ -55,8 +55,8 @@ class Empleado extends \yii\db\ActiveRecord
             'nombre' => 'Nombre',
             'apellidos' => 'Apellidos',
             'cedula' => 'Cedula',
-            'idEstado' => 'Id Estado',
-            'idDpto' => 'Id Dpto',
+            'idEstado' => 'Estado',
+            'idDpto' => 'Departamento',
         ];
     }
 
